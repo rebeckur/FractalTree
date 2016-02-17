@@ -1,9 +1,9 @@
 private double fractionLength = .8; 
 private int smallestBranch = 10; 
 private double branchAngle = .2;
-private int r = 108;
-private int g = 68;
-private int b = 40;
+private int col1 = color(108, 68, 40);
+private int col2 = color (78, 98, 50);
+private int col3 = color(58, 130, 60);
 
 public void setup() 
 {   
@@ -14,15 +14,13 @@ public void draw()
 {   
 	background(135, 194, 223);   
 	//stroke(0, 160, 65);
-	stroke(r, g, b);   
+	stroke(col1);   
 	line(320,480,320,380);   
 	drawBranches(320,380,100,3*Math.PI/2);  //will add later 
 }
 public void mousePressed()
 {
-	r = 108;
-	g = 68;
-	b = 40;
+	stroke(col1);
 	redraw();
 }
 public void drawBranches(int x,int y, double branchLength, double angle) 
@@ -39,15 +37,19 @@ public void drawBranches(int x,int y, double branchLength, double angle)
 	int endX2 = (int)(branchLength*Math.cos(angle2) + x);
 	int endY2 = (int)(branchLength*Math.sin(angle2) + y);
 
-	stroke(r, g, b);
+	if (endY1 <= 70)
+	{
+		stroke(col3);
+	}
+	else if (endY1 <= 100)
+	{
+		stroke(col2);
+	}
+	
 	line(x, y, endX1, endY1);
 	line(x, y, endX2, endY2);
 
-	r-=7;
-	g+=10;
-	b++;
-
-	if (branchLength > smallestBranch)
+	if (branchLength >= smallestBranch)
 	{
 		drawBranches(endX1, endY1, branchLength, angle1);
 		drawBranches(endX2, endY2, branchLength, angle2);
