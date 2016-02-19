@@ -18,7 +18,7 @@ public void draw()
   stroke(col1);   
   line(320,480,320,380);   
   drawBranches(320,380,100,3*Math.PI/2);  //will add later 
-  seasonButton(50, 430, 50, "Change Seasons");
+  seasonButton(50, 430, 50, "Seasons");
 }
 public void mousePressed()
 {
@@ -81,5 +81,5 @@ public void seasonButton(int x, int y, int len, String season)
   stroke(0);
   rect(x, y, len, len/2);
   fill(0);
-  text(season, x+len/8, y+len/3);
+  text(season, x+len/10, y+len/3);
 }
